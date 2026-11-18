@@ -2,7 +2,7 @@
 
 A Python console application developed for **DevOps for Cloud Computing (CSC418)** Lab Assignment 4.
 
-Project status: In Development (Core feature implementation active)
+Project status: Active Development & Quality Assurance (Testing and Verification In Progress)
 
 ## Student Information
 - **Name:** Fahad Saeed

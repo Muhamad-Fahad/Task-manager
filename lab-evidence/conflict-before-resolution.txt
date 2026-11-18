@@ -1,0 +1,27 @@
+=== GIT MERGE CONFLICT EVIDENCE (BEFORE RESOLUTION) ===
+Branch: main (merging conflict/status-testing)
+Command: git merge conflict/status-testing
+
+--- Git Status Output ---
+On branch main
+Your branch is up to date with 'origin/main'.
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   README.md
+
+no changes added to commit (use "git add" to track)
+
+--- Conflict Markers in README.md ---
+<<<<<<< HEAD
+Project status: In Development (Core feature implementation active)
+=======
+Project status: Quality Assurance (Automated testing & test suite review)
+>>>>>>> conflict/status-testing
+
+--- Conflict Root Cause Explanation ---
+A merge conflict occurred because both branches ('conflict/status-dev' merged into main, and 'conflict/status-testing') branched off the same base commit where README.md contained 'Project status: Planning' on line 5. Both branches concurrently modified the exact same line into different text without knowing about each other's changes. Git could not automatically reconcile which version should take precedence, requiring manual developer intervention.
