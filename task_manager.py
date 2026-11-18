@@ -34,6 +34,20 @@ class TaskManager:
         self.tasks: List[Task] = []
         self._next_id: int = 1
 
+    def add_task(self, title: str) -> Task:
+        """
+        Add a new task with non-empty title validation.
+        Raises ValueError if title is empty or only whitespace.
+        """
+        if not title or not title.strip():
+            raise ValueError("Task title cannot be empty or blank.")
+
+        sanitized_title = title.strip()
+        new_task = Task(task_id=self._next_id, title=sanitized_title, completed=False)
+        self.tasks.append(new_task)
+        self._next_id += 1
+        return new_task
+
     def list_tasks(self) -> List[Task]:
         """Return all managed tasks."""
         return list(self.tasks)
