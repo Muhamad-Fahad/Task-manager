@@ -1,0 +1,72 @@
+"""
+Main CLI entrypoint for Student Task Manager.
+Author: Fahad Saeed (SP23-BSE-115)
+"""
+
+import sys
+from task_manager import TaskManager
+
+
+def show_menu():
+    print("\n===============================")
+    print("   STUDENT TASK MANAGER CLI   ")
+    print("===============================")
+    print("1. View All Tasks")
+    print("2. Add New Task")
+    print("3. Mark Task as Completed")
+    print("4. Delete Task")
+    print("5. Exit")
+    print("===============================")
+
+
+def run_cli():
+    manager = TaskManager()
+    print("Welcome to Student Task Manager!")
+
+    while True:
+        show_menu()
+        choice = input("Enter choice (1-5): ").strip()
+
+        if choice == "1":
+            manager.display_tasks()
+        elif choice == "2":
+            if hasattr(manager, "add_task"):
+                title = input("Enter task title: ")
+                try:
+                    task = manager.add_task(title)
+                    print(f"Task added successfully: {task}")
+                except ValueError as err:
+                    print(f"Error: {err}")
+            else:
+                print("Feature 'add-task' is under active development.")
+        elif choice == "3":
+            if hasattr(manager, "complete_task"):
+                task_id_str = input("Enter task ID to complete: ").strip()
+                try:
+                    task_id = int(task_id_str)
+                    task = manager.complete_task(task_id)
+                    print(f"Task completed successfully: {task}")
+                except (ValueError, KeyError) as err:
+                    print(f"Error: {err}")
+            else:
+                print("Feature 'complete-task' is under active development.")
+        elif choice == "4":
+            if hasattr(manager, "delete_task"):
+                task_id_str = input("Enter task ID to delete: ").strip()
+                try:
+                    task_id = int(task_id_str)
+                    task = manager.delete_task(task_id)
+                    print(f"Task deleted successfully: {task}")
+                except (ValueError, KeyError) as err:
+                    print(f"Error: {err}")
+            else:
+                print("Feature 'delete-task' is under active development.")
+        elif choice == "5":
+            print("Exiting Student Task Manager. Goodbye!")
+            sys.exit(0)
+        else:
+            print("Invalid selection. Please choose an option between 1 and 5.")
+
+
+if __name__ == "__main__":
+    run_cli()
