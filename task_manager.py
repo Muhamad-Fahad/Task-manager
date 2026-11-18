@@ -59,6 +59,16 @@ class TaskManager:
                 return task
         raise ValueError(f"Task with ID {task_id} not found.")
 
+    def delete_task(self, task_id: int) -> Task:
+        """
+        Delete an existing task using its task_id.
+        Raises ValueError if task_id does not exist.
+        """
+        for index, task in enumerate(self.tasks):
+            if task.id == task_id:
+                return self.tasks.pop(index)
+        raise ValueError(f"Task with ID {task_id} not found.")
+
     def list_tasks(self) -> List[Task]:
         """Return all managed tasks."""
         return list(self.tasks)
