@@ -37,16 +37,13 @@ def run_cli():
             except ValueError as err:
                 print(f"[VALIDATION ERROR] {err}")
         elif choice == "3":
-            if hasattr(manager, "complete_task"):
-                task_id_str = input("Enter task ID to complete: ").strip()
-                try:
-                    task_id = int(task_id_str)
-                    task = manager.complete_task(task_id)
-                    print(f"Task completed successfully: {task}")
-                except (ValueError, KeyError) as err:
-                    print(f"Error: {err}")
-            else:
-                print("Feature 'complete-task' is under active development.")
+            raw_id = input("Enter task ID to mark as completed: ").strip()
+            try:
+                task_id = int(raw_id)
+                task = manager.complete_task(task_id)
+                print(f"[SUCCESS] Task marked as completed: ID={task.id}, Title='{task.title}', Status=Done")
+            except ValueError as err:
+                print(f"[ERROR] Invalid input or task ID: {err}")
         elif choice == "4":
             if hasattr(manager, "delete_task"):
                 task_id_str = input("Enter task ID to delete: ").strip()
