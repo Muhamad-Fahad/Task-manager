@@ -2,6 +2,8 @@
 
 A Python console application developed for **DevOps for Cloud Computing (CSC418)** Lab Assignment 4.
 
+Project status: Planning
+
 ## Student Information
 - **Name:** Fahad Saeed
 - **Registration Number:** SP23-BSE-115
