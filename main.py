@@ -45,16 +45,13 @@ def run_cli():
             except ValueError as err:
                 print(f"[ERROR] Invalid input or task ID: {err}")
         elif choice == "4":
-            if hasattr(manager, "delete_task"):
-                task_id_str = input("Enter task ID to delete: ").strip()
-                try:
-                    task_id = int(task_id_str)
-                    task = manager.delete_task(task_id)
-                    print(f"Task deleted successfully: {task}")
-                except (ValueError, KeyError) as err:
-                    print(f"Error: {err}")
-            else:
-                print("Feature 'delete-task' is under active development.")
+            raw_id = input("Enter task ID to delete: ").strip()
+            try:
+                task_id = int(raw_id)
+                deleted_task = manager.delete_task(task_id)
+                print(f"[SUCCESS] Task deleted successfully: ID={deleted_task.id}, Title='{deleted_task.title}'")
+            except ValueError as err:
+                print(f"[ERROR] Invalid input or task ID: {err}")
         elif choice == "5":
             print("Exiting Student Task Manager. Goodbye!")
             sys.exit(0)
