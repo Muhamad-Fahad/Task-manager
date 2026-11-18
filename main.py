@@ -30,15 +30,12 @@ def run_cli():
         if choice == "1":
             manager.display_tasks()
         elif choice == "2":
-            if hasattr(manager, "add_task"):
-                title = input("Enter task title: ")
-                try:
-                    task = manager.add_task(title)
-                    print(f"Task added successfully: {task}")
-                except ValueError as err:
-                    print(f"Error: {err}")
-            else:
-                print("Feature 'add-task' is under active development.")
+            title = input("Enter task title: ")
+            try:
+                task = manager.add_task(title)
+                print(f"[SUCCESS] Task added successfully: ID={task.id}, Title='{task.title}'")
+            except ValueError as err:
+                print(f"[VALIDATION ERROR] {err}")
         elif choice == "3":
             if hasattr(manager, "complete_task"):
                 task_id_str = input("Enter task ID to complete: ").strip()
